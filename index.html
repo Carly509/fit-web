@@ -8,7 +8,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <title>Web Design Mastery | Fitclub</title>
+    <title>WorkFit</title>
   </head>
   <body>
     <nav>
@@ -17,38 +17,72 @@
       </div>
       <ul class="nav__links">
         <li class="link"><a href="#">Home</a></li>
-        <li class="link"><a href="#">Program</a></li>
+        <li class="link"><a href="program.html">Program</a></li>
         <li class="link"><a href="#">Service</a></li>
         <li class="link"><a href="#">About</a></li>
         <li class="link"><a href="#">Community</a></li>
       </ul>
-      <button class="btn">Join Now</button>
+      <button class="btn" id="myBtn">Join Now</button>
     </nav>
 
-    <header class="section__container header__container">
-      <div class="header__content">
-        <span class="bg__blur"></span>
-        <span class="bg__blur header__blur"></span>
-        <h4>BEST FITNESS IN THE TOWN</h4>
-        <h1><span>MAKE</span> YOUR BODY SHAPE</h1>
-        <p>
-          Unleash your potential and embark on a journey towards a stronger,
-          fitter, and more confident you. Sign up for 'Make Your Body Shape' now
-          and witness the incredible transformation your body is capable of!
-        </p>
-        <button class="btn">Get Started</button>
+    <div class="carousel-container">
+      <div class="carousel">
+        <header class="section__container header__container active">
+          <div class="header__content">
+            <span class="bg__blur"></span>
+            <span class="bg__blur header__blur"></span>
+            <h4>BEST FITNESS IN THE TOWN</h4>
+            <h1><span>MAKE</span> YOUR BODY SHAPE</h1>
+            <p>
+              Unleash your potential and embark on a journey towards a stronger,
+              fitter, and more confident you. Sign up for 'Make Your Body Shape' now
+              and witness the incredible transformation your body is capable of!
+            </p>
+            <button class="btn" id="myBtn2">Get Started</button>
+          </div>
+          <div class="header__image">
+            <img src="assets/gym2.png" alt="header" />
+          </div>
+        </header>
+        <header class="section__container header__container">
+          <div class="header__content">
+            <span class="bg__blur"></span>
+            <span class="bg__blur header__blur"></span>
+            <h4>BEST FITNESS IN THE TOWN</h4>
+            <h1><span>MAKE</span> YOUR BODY SHAPE</h1>
+            <p>
+              aaaaaaaaaaaaaaaa aaaaaaaaa aaaaaaaa aaaaaaaa aaaaaaaa aaaaaaaa aaaaaaaa aaaaaaaa aaaaa
+            </p>
+            <button class="btn">Get Started</button>
+          </div>
+          <div class="header__image">
+            <img src="assets/header.png" alt="header" />
+          </div>
+        </header>
+        <header class="section__container header__container">
+          <div class="header__content">
+            <span class="bg__blur"></span>
+            <span class="bg__blur header__blur"></span>
+            <h4>BEST FITNESS IN THE TOWN</h4>
+            <h1><span>MAKE</span> YOUR BODY SHAPE</h1>
+            <p>
+            sadsfdgfhgjhkjjhfgdfsdfdghfjgkhjghfgdfsdfgdhf
+            </p>
+            <button class="btn">Get Started</button>
+          </div>
+          <div class="header__image">
+            <img src="assets/gym1.png" alt="header" />
+          </div>
+        </header>
       </div>
-      <div class="header__image">
-        <img src="assets/header.png" alt="header" />
-      </div>
-    </header>
+    </div>
 
     <section class="section__container explore__container">
       <div class="explore__header">
         <h2 class="section__header">EXPLORE OUR PROGRAM</h2>
         <div class="explore__nav">
-          <span><i class="ri-arrow-left-line"></i></span>
-          <span><i class="ri-arrow-right-line"></i></span>
+          <span><i class="ri-arrow-left-line" id="prevButton"></i></span>
+          <span><i class="ri-arrow-right-line" id="nextButton"></i></span>
         </div>
       </div>
       <div class="explore__grid">
@@ -240,7 +274,7 @@
               <img src="assets/member.jpg" alt="member" />
               <div class="review__member__details">
                 <h4>Jane Cooper</h4>
-                <p>Software Developer</p>
+                <p>Member</p>
               </div>
             </div>
             <div class="review__nav">
@@ -251,6 +285,38 @@
         </div>
       </div>
     </section>
+
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+
+        <div class="background">
+          <div class="shape"></div>
+          <div class="shape"></div>
+      </div>
+      <form>
+        <span class="close">&times;</span>
+          <h3>Register Here</h3>
+
+          <label for="username">Name</label>
+          <input type="text" placeholder="Email" id="username">
+
+          <label for="username">Phone</label>
+          <input type="text" placeholder="Phone" id="username">
+
+          <label for="username">Email</label>
+          <input type="text" placeholder="Email" id="username">
+
+          <button class="button2">We'll contact you</button>
+          <div class="social">
+            <div class="go"><i class="fab fa-google"></i>  Google</div>
+            <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+          </div>
+      </form>
+      </div>
+
+    </div>
 
     <footer class="section__container footer__container">
       <span class="bg__blur"></span>
@@ -289,7 +355,68 @@
       </div>
     </footer>
     <div class="footer__bar">
-      Copyright © 2023 Web Design Mastery. All rights reserved.
+      Copyright © 2023. All rights reserved.
     </div>
+
+    <script>
+      // Get the carousel items and buttons
+const carouselItems = document.querySelectorAll('.header__container');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+
+// Set the initial index and display the first item
+let currentIndex = 0;
+carouselItems[currentIndex].classList.add('active');
+
+// Add event listeners to the buttons
+prevButton.addEventListener('click', showPreviousItem);
+nextButton.addEventListener('click', showNextItem);
+
+// Function to show the previous item
+function showPreviousItem() {
+  carouselItems[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+  carouselItems[currentIndex].classList.add('active');
+}
+
+// Function to show the next item
+function showNextItem() {
+  carouselItems[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex + 1) % carouselItems.length;
+  carouselItems[currentIndex].classList.add('active');
+}
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+var btn2 = document.getElementById("myBtn2");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+btn2.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+    </script>
   </body>
 </html>
